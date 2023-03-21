@@ -54,5 +54,13 @@ export class AddNewProductComponent implements OnInit {
       this.product.productImages.push(fileImage);
     }
   }
+ removeImages(i: number){
+    this.product.productImages.splice(i,1);
 
+ }
+
+  fileDropped(fileImage: FileImage){
+    this.product.productImages.push(fileImage);
+
+  }
 }
