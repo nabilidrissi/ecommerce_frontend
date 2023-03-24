@@ -6,5 +6,4 @@ export interface Product{
     productDiscountedPrice: number,
     productActualPrice: number,
     productImages: FileImage[]
-
 }

@@ -9,5 +9,6 @@
 <mat-toolbar color="primary" *ngIf="isLoggedIn()">
   <button mat-raised-button color="primary" routerLink="/">Home</button>
   <button *ngIf="isAdmin()" mat-raised-button color="primary" routerLink="/addNewProduct">Add New Product</button>
+  <button *ngIf="isAdmin()" mat-raised-button color="primary" routerLink="/getAllProducts">Show Products Détails </button>
 
 </mat-toolbar>
