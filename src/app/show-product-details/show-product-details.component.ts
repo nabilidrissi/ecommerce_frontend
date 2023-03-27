@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../_services/product.service';
 import {Product} from '../models/product.model';
 import {HttpErrorResponse} from '@angular/common/http';
+import {error} from 'protractor';
 
 @Component({
   selector: 'app-show-product-details',
@@ -10,7 +11,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class ShowProductDetailsComponent implements OnInit {
     productDetails: Product[] = [];
-    displayedColumns: string[] = ['Id', 'Product Name', 'product description', 'product discounted Price', 'product Actual Price'];
+    displayedColumns: string[] = ['Id', 'Product Name', 'product description', 'product discounted Price', 'product Actual Price', 'Edit', 'Delete'];
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -26,5 +27,15 @@ export class ShowProductDetailsComponent implements OnInit {
         }
     );
   }
+    deleteProduct(productId){
+      this.productService.deleteProduct(productId).subscribe(
+          (resp) =>{
+              this.getAllProducts();
+          },
+          (error:HttpErrorResponse) =>{
+              console.log(error);
+          }
+      )
+    }
 
 }
